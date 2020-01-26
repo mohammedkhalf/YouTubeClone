@@ -11,7 +11,6 @@
                      @captcha
                     <input type="submit" class="btn btn-success">
             </form>
-
         </div>
     </div>
 
