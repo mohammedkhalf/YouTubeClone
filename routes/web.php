@@ -21,5 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/form', 'PostController@index');
 Route::post('/store', 'PostController@store')->name('users.store');
+Route::get('/test-email', 'PostController@processQueue');
+
 
 
