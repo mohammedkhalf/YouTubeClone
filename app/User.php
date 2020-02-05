@@ -1,19 +1,30 @@
 <?php
 
-namespace App;
+namespace laraTube;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Scout\Searchable;
-
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait;
     use Notifiable;
     use Searchable;
+
+    public $incrementing = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            
+            $model->id = Str::uuid();            
+
+        });
+    }
 
     /**
      * The attributes that are mass assignable.

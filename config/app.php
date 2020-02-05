@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        laraTube\Providers\AppServiceProvider::class,
+        laraTube\Providers\AuthServiceProvider::class,
+        // laraTube\Providers\BroadcastServiceProvider::class,
+        laraTube\Providers\EventServiceProvider::class,
+        laraTube\Providers\RouteServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
 
 

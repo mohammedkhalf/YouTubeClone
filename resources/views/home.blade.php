@@ -15,10 +15,6 @@
                     @endif
 
                     You are logged in!
-
-                    @permission('create-users')
-                        Permission section
-                    @endpermission
                     
                 </div>
             </div>
