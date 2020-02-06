@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Scout\Searchable;
 use Illuminate\Support\Str;
+use laraTube\Channel;
 
 class User extends Authenticatable
 {
@@ -24,6 +25,11 @@ class User extends Authenticatable
             $model->id = Str::uuid();            
 
         });
+    }
+
+    public function channel()
+    {
+        return $this->hasOne(Channel::class);
     }
 
     /**

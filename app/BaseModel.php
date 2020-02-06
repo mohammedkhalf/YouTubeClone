@@ -9,6 +9,8 @@ class BaseModel extends Model
 {
     public $incrementing = false;
 
+    protected $guarded = [];
+
     protected static function boot()
     {
         parent::boot();
