@@ -1,12 +1,16 @@
 <?php
 
-namespace laraTube;
+namespace App;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Channel extends Model
+class Channel extends Model implements HasMedia
 {
+    use HasMediaTrait;
+
     protected $fillable = [
         'name', 'user_id', 'description' , 'image',
     ];
@@ -18,8 +22,8 @@ class Channel extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            
-            $model->id = Str::uuid();            
+
+            $model->id = Str::uuid();
 
         });
     }

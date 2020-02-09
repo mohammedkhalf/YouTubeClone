@@ -15,6 +15,7 @@
                           <div class="form-group row justify-content-center">
                                 <div class="channel-avatar">
                                     <div class="channel-avatar-overlay"  onclick="document.getElementById('image').click()"></div>
+                                    <img src="{{URL::asset($channel->getFirstMediaUrl('images'))}}"  width="100px" height="100px">
                                 </div>
                           </div>
 
@@ -33,7 +34,6 @@
                           <button type="submit"  class="btn btn-info">Update</button>
 
                       </form>
-
 
                     </div>
                 </div>

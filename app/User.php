@@ -1,18 +1,21 @@
 <?php
 
-namespace laraTube;
+namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Scout\Searchable;
 use Illuminate\Support\Str;
-use laraTube\Channel;
+use App\Channel;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use Notifiable;
     use Searchable;
+    use HasMediaTrait;
 
     public $incrementing = false;
 
@@ -21,8 +24,8 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($model) {
-            
-            $model->id = Str::uuid();            
+
+            $model->id = Str::uuid();
 
         });
     }

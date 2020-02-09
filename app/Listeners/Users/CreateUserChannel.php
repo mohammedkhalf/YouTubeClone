@@ -1,6 +1,6 @@
 <?php
 
-namespace laraTube\Listeners\Users;
+namespace App\Listeners\Users;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

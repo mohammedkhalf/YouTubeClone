@@ -1,6 +1,6 @@
 <?php
 
-namespace laraTube;
+namespace App;
 use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Model;
