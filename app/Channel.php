@@ -32,4 +32,11 @@ class Channel extends Model implements HasMedia
     {
         return $this->belongsTo(User::class);
     }
+
+    public function editTable()
+    {
+        if(!auth()->check())  return false;
+
+        return $this->user_id === auth()->user()->id;
+    }
 }
