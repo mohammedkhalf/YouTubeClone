@@ -9,9 +9,14 @@
 
                     <div class="card-body">
 
-                      <form  id="update-channel-form"  action="{{route('channels.update' , $channel->id)}}" method="POST"  enctype="multipart/form-data">
+                        @if($channel->editTable())
+
+                        <form  id="update-channel-form"  action="{{route('channels.update' , $channel->id)}}" method="POST"  enctype="multipart/form-data">
                           @csrf
                           @method('PATCH')
+
+                        @endif
+
                           <div class="form-group row justify-content-center">
                                 <div class="channel-avatar">
                                         <div class="channel-avatar-overlay"  onclick="document.getElementById('image').click()"></div>
@@ -20,38 +25,51 @@
                                 </div>
                           </div>
 
+                            @if(!auth()->check())
+                                <div class="form-group text-center">
 
-                          @if($channel->editTable())
-                              <input  onchange="document.getElementById('update-channel-form').submit()"  type="file" id="image"  name="image"  style="display: none"/>
+                                    <label><h4> {{$channel->name}} </h4></label><br/>
+                                    <label>{{$channel->description}} </label>
 
+                                </div>
+                            @endif
 
-                              <div class="form-group">
-                                  <label for="name" class="form-control-label"> Name </label>
-                                  <input  id="name"  name="name"  value="{{$channel->name}}"  type="text"  class="form-control"/>
-                              </div>
+                                <div class="text-center">
+                                    <button class="btn btn-danger">
+                                            Subscribe 7K
+                                    </button>
+                                </div>
 
-                              <div class="form-group">
-                                  <label for="name" class="form-control-label"> description </label>
-                                  <textarea  id="description"  name="description"  row="10" class="form-control">{{$channel->description}}</textarea>
-                              </div>
-
-                              @if($errors->any())
-                                  <ul class="list-group mb-5">
-                                      @foreach($errors->all() as $error)
-                                          <li class="text-danger  list-group-item">
-                                              {{$error}}
-                                          </li>
-                                      @endforeach
-                                  </ul>
-                              @endif
-                              <button type="submit"  class="btn btn-info">Update Channel</button>
-                          @endif
+                            @if($channel->editTable())
+                                <input  onchange="document.getElementById('update-channel-form').submit()"  type="file" id="image"  name="image"  style="display: none"/>
 
 
+                                <div class="form-group">
+                                    <label for="name" class="form-control-label"> Name </label>
+                                    <input  id="name"  name="name"  value="{{$channel->name}}"  type="text"  class="form-control"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name" class="form-control-label"> description </label>
+                                    <textarea  id="description"  name="description"  row="10" class="form-control">{{$channel->description}}</textarea>
+                                </div>
+
+                                @if($errors->any())
+                                    <ul class="list-group mb-5">
+                                        @foreach($errors->all() as $error)
+                                            <li class="text-danger  list-group-item">
+                                                {{$error}}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                                <button type="submit"  class="btn btn-info">Update Channel</button>
+                            @endif
 
 
-                      </form>
-
+                        @if($channel->editTable())
+                        </form>
+                        @endif
                     </div>
                 </div>
             </div>
