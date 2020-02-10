@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use App\Subscription;
+
 
 class Channel extends Model implements HasMedia
 {
@@ -38,5 +40,9 @@ class Channel extends Model implements HasMedia
         if(!auth()->check())  return false;
 
         return $this->user_id === auth()->user()->id;
+    }
+
+    public function subscriptions(){
+        return $this->hasMany(Subscription::class);
     }
 }

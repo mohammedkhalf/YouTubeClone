@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -27,22 +26,23 @@
 
                             @if(!auth()->check())
                                 <div class="form-group text-center">
-
                                     <label><h4> {{$channel->name}} </h4></label><br/>
                                     <label>{{$channel->description}} </label>
-
                                 </div>
                             @endif
 
                                 <div class="text-center">
-                                    <button class="btn btn-danger">
-                                            Subscribe 7K
-                                    </button>
+                                        <subscribe-button   :subscriptions="{{ $channel->subscriptions }}" inline-template>
+
+                                            <button  @click="toggleSubscription"  class="btn btn-danger">
+                                                Subscribe 7K
+                                            </button>
+
+                                        </subscribe-button>
                                 </div>
 
                             @if($channel->editTable())
                                 <input  onchange="document.getElementById('update-channel-form').submit()"  type="file" id="image"  name="image"  style="display: none"/>
-
 
                                 <div class="form-group">
                                     <label for="name" class="form-control-label"> Name </label>
@@ -65,8 +65,6 @@
                                 @endif
                                 <button type="submit"  class="btn btn-info">Update Channel</button>
                             @endif
-
-
                         @if($channel->editTable())
                         </form>
                         @endif
