@@ -3,7 +3,7 @@ Vue.component('subscribe-button' , {
         subscriptions : {
             type : Array,
             required : true,
-            default: ()=>[]
+            default: () =>[]
         }
     },
     methods:{
