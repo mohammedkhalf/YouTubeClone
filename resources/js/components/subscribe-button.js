@@ -8,12 +8,19 @@ Vue.component('subscribe-button' , {
             required : true,
             default: () => ({})
         },
-        subscriptions : {
+        initialSubscriptions : {
             type : Array,
             required : true,
             default: () =>[]
         }
     },
+
+    data : function(){
+        return {
+            subscriptions: this.initialSubscriptions
+        }
+    },
+
     computed : {
         subscribed(){
                 if(! __auth() || this.channel.user_id === __auth().id) return false;
@@ -42,9 +49,18 @@ Vue.component('subscribe-button' , {
 
             if(this.subscribed){
                 axios.delete(`/channels/${this.channel.id}/subscriptions/${this.subscription.id}`)
+                    .then(()=> {
+                        this.subscriptions = this.subscriptions.filter(s => s.id !== this.subscription.id)
+                    })
             }
             else{
                 axios.post(`/channels/${this.channel.id}/subscriptions`)
+                    .then(response => {
+                        this.subscriptions = [
+                            ...this.subscriptions,
+                            response.data
+                        ]
+                    })
             }
         }
     }
