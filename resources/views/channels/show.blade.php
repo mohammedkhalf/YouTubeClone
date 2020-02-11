@@ -24,17 +24,15 @@
                                 </div>
                           </div>
 
-                            @if(!auth()->check())
                                 <div class="form-group text-center">
                                     <label><h4> {{$channel->name}} </h4></label><br/>
                                     <label>{{$channel->description}} </label>
                                 </div>
-                            @endif
 
                                 <div class="text-center">
-                                        <subscribe-button  :channel="{{$channel}}" :subscriptions="{{ $channel->subscriptions }}" inline-template>
+                                        <subscribe-button  :channel="{{ $channel }}" :subscriptions="{{ $channel->subscriptions }}" inline-template>
                                             <button  @click="toggleSubscription"  class="btn btn-danger">
-                                                @{{ owner ? '' : subscribed ? 'UnSubscribe' : 'Subscripe' }}  @{{ subscriptions.length }}  @{{ owner ? 'Subscribers' : '' }}
+                                                @{{ owner ? '' : subscribed ? 'UnSubscribe' : 'Subscripe' }}   @{{ owner ? 'Subscribers' : '' }} @{{ count }}
                                             </button>
                                         </subscribe-button>
                                 </div>

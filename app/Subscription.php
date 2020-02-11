@@ -7,6 +7,10 @@ use Illuminate\Support\Str;
 
 class Subscription extends Model
 {
+        protected $fillable = [
+            'channel_id', 'user_id'
+        ];
+
         public $incrementing = false;
 
         protected static function boot()
