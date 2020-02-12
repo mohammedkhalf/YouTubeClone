@@ -1,0 +1,6 @@
+Vue.component('channel-upload' , {
+
+
+
+
+});

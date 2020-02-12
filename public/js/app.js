@@ -33192,6 +33192,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 __webpack_require__(/*! ./components/subscribe-button */ "./resources/js/components/subscribe-button.js");
 
+__webpack_require__(/*! ./components/channel-upload */ "./resources/js/components/channel-upload.js");
+
 var app = new Vue({
   el: '#app'
 });
@@ -33227,6 +33229,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/channel-upload.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/channel-upload.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+Vue.component('channel-upload', {});
 
 /***/ }),
 
