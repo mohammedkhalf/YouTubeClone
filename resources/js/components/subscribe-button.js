@@ -1,5 +1,5 @@
 import numeral from 'numeral'
-import Axios from "axios";
+import axios from "axios";
 
 Vue.component('subscribe-button' , {
     props : {
@@ -23,6 +23,7 @@ Vue.component('subscribe-button' , {
 
     computed : {
         subscribed(){
+                // if user not auth || he is owner the channel
                 if(! __auth() || this.channel.user_id === __auth().id) return false;
                 return  !!this.subscription
         },

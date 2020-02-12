@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\UploadVediosController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,3 +25,4 @@ Route::resource('/channels', 'ChannelController');
 
 Route::resource('channels/{channel}/subscriptions', 'SubscriptionController')->only(['store' , 'destroy'])->middleware(['auth']);
 
+Route::get('channels/{channel}/videos' , [UploadVediosController::class,'index'])->name('channel.upload');

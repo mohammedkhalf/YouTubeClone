@@ -33277,6 +33277,7 @@ Vue.component('subscribe-button', {
   },
   computed: {
     subscribed: function subscribed() {
+      // if user not auth || he is owner the channel
       if (!__auth() || this.channel.user_id === __auth().id) return false;
       return !!this.subscription;
     },
@@ -33306,13 +33307,13 @@ Vue.component('subscribe-button', {
       }
 
       if (this.subscribed) {
-        axios["delete"]("/channels/".concat(this.channel.id, "/subscriptions/").concat(this.subscription.id)).then(function () {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("/channels/".concat(this.channel.id, "/subscriptions/").concat(this.subscription.id)).then(function () {
           _this.subscriptions = _this.subscriptions.filter(function (s) {
             return s.id !== _this.subscription.id;
           });
         });
       } else {
-        axios.post("/channels/".concat(this.channel.id, "/subscriptions")).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/channels/".concat(this.channel.id, "/subscriptions")).then(function (response) {
           _this.subscriptions = [].concat(_toConsumableArray(_this.subscriptions), [response.data]);
         });
       }
