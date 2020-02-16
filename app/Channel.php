@@ -1,15 +1,11 @@
 <?php
 
 namespace App;
-use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use App\Subscription;
 
-
-class Channel extends Model implements HasMedia
+class Channel extends BaseModel implements HasMedia
 {
     use HasMediaTrait;
 
@@ -17,18 +13,18 @@ class Channel extends Model implements HasMedia
         'name', 'user_id', 'description' , 'image',
     ];
 
-    public $incrementing = false;
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($model) {
-
-            $model->id = Str::uuid();
-
-        });
-    }
+//    public $incrementing = false;
+//
+//    protected static function boot()
+//    {
+//        parent::boot();
+//
+//        static::creating(function ($model) {
+//
+//            $model->id = Str::uuid();
+//
+//        });
+//    }
 
     public function user()
     {
@@ -44,5 +40,10 @@ class Channel extends Model implements HasMedia
 
     public function subscriptions(){
         return $this->hasMany(Subscription::class);
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
     }
 }

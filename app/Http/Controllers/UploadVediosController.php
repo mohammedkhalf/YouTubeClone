@@ -7,9 +7,18 @@ use Illuminate\Http\Request;
 class UploadVediosController extends Controller
 {
 
-    public function index()
+    public function index(Channel  $channel)
     {
-        return view('channels.upload');
+        return view('channels.upload' , ['channel' => $channel]);
+    }
+
+    public function store(Channel  $channel)
+    {
+        return $channel->videos()->create([
+            'title' => request()->title,
+            'path' => request()->video->store("channels/{$channel->id}")
+        ]);
+
     }
 
 
