@@ -33239,7 +33239,20 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-Vue.component('channel-upload', {});
+Vue.component('channel-upload', {
+  data: function data() {
+    return {
+      selected: false
+    };
+  },
+  methods: {
+    upload: function upload() {
+      this.selected = true;
+      var videos = this.$refs.videos.files;
+      console.log(videos);
+    }
+  }
+});
 
 /***/ }),
 
