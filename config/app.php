@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+        Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class,
+
 
 
     ],
@@ -230,6 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
+        'FFMpeg' => Pbmedia\LaravelFFMpeg\FFMpegFacade::class
+
     ],
 
 ];
