@@ -33258,24 +33258,20 @@ Vue.component('channel-upload', {
   },
   methods: {
     upload: function upload() {
-      var _this = this;
-
       this.selected = true;
       this.videos = Array.from(this.$refs.videos.files);
-      var uploaders = this.videos.map(function (video) {
-        var form = new FormData();
-        _this.progress[video.name] = 0;
-        form.append('video', video);
-        form.append('title', video.name);
-        return axios.post("/channels/".concat(_this.channel.id, "/videos"), form, {
-          onUploadProgress: function onUploadProgress(event) {
-            _this.progress[video.name] = Math.ceil(event.loaded / event.total * 100);
-
-            _this.$forceUpdate();
-          } //onUploadProgress
-
-        }); //axios
-      });
+      console.log(this.videos); //   const uploaders = this.videos.map(video =>{
+      //       const form = new FormData();
+      //       this.progress[video.name] = 0;
+      //       form.append('video' , video);
+      //       form.append('title' , video.name);
+      //       return axios.post(`/channels/${this.channel.id}/videos`,form , {
+      //           onUploadProgress: (event) => {
+      //               this.progress[video.name] = Math.ceil((event.loaded / event.total) *100 );
+      //               this.$forceUpdate()
+      //           } //onUploadProgress
+      //       }) //axios
+      //   })
     }
   }
 });

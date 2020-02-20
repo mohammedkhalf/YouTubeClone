@@ -15,15 +15,19 @@ class UploadVediosController extends Controller
 
     public function store(Channel  $channel)
     {
-
-        $video =  $channel->videos()->create([
+        return $channel->videos()->create([
             'title' => request()->title,
             'path' => request()->video->store("channels/{$channel->id}")
         ]);
 
-        $this->dispatch(new ConvertForStreaming($video));
+        // $video =  $channel->videos()->create([
+        //     'title' => request()->title,
+        //     'path' => request()->video->store("channels/{$channel->id}")
+        // ]);
 
-        return $video;
+        // $this->dispatch(new ConvertForStreaming($video));
+
+        // return $video;
 
     }
 
