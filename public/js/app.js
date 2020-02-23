@@ -33258,20 +33258,26 @@ Vue.component('channel-upload', {
   },
   methods: {
     upload: function upload() {
+      var _this = this;
+
       this.selected = true;
       this.videos = Array.from(this.$refs.videos.files);
-      console.log(this.videos); //   const uploaders = this.videos.map(video =>{
-      //       const form = new FormData();
-      //       this.progress[video.name] = 0;
-      //       form.append('video' , video);
-      //       form.append('title' , video.name);
-      //       return axios.post(`/channels/${this.channel.id}/videos`,form , {
-      //           onUploadProgress: (event) => {
-      //               this.progress[video.name] = Math.ceil((event.loaded / event.total) *100 );
-      //               this.$forceUpdate()
-      //           } //onUploadProgress
-      //       }) //axios
-      //   })
+      var uploaders = this.videos.map(function (video) {
+        var form = new FormData();
+        _this.progress[video.name] = 0;
+        form.append('video', video);
+        form.append('title', video.name); //   console.log(form);
+        //   return axios.post(`/channels/${this.channel.id}/videos`,form);
+
+        return axios.post("/channels/".concat(_this.channel.id, "/videos"), form, {
+          onUploadProgress: function onUploadProgress(event) {
+            _this.progress[video.name] = Math.ceil(event.loaded / event.total * 100);
+
+            _this.$forceUpdate();
+          } //onUploadProgress
+
+        }); //axios
+      }); //uploaders
     }
   }
 });
@@ -33389,8 +33395,8 @@ Vue.component('subscribe-button', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coder_khalf\Desktop\YouTubeClone\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coder_khalf\Desktop\YouTubeClone\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Mkhalf\Desktop\youtubeClone\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Mkhalf\Desktop\youtubeClone\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

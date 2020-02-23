@@ -11,7 +11,7 @@
                             <p class="text-center"> Upload Videos </p>
                         </div>
 
-                        <div class="card p-3"  v-else>
+                        <div class="card p-3"  v-else>    <!-- selected -->
 
                             <div class="my-4"  v-for="video in videos">
                                 <div class="progress mb-3">
